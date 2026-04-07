@@ -1,0 +1,12 @@
+.footer {
+  padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+  background: #0f0f1a;
+  border-top: 1px solid rgba(233, 69, 96, 0.08);
+  text-align: center;
+}
+
+.copyright {
+  color: rgba(240, 240, 245, 0.35);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}

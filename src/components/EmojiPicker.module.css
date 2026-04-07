@@ -1,0 +1,50 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 4px 8px;
+  color: var(--peleja-muted-color, #6c757d);
+  font-family: inherit;
+}
+
+.toggle:hover {
+  color: var(--peleja-accent-color, #007bff);
+}
+
+.popover {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  z-index: 1000;
+  margin-bottom: 8px;
+}
+
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+  }
+
+  .popover {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: auto;
+    margin-bottom: 0;
+    z-index: 1000;
+  }
+}

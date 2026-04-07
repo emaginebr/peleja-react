@@ -1,0 +1,39 @@
+.section {
+  padding: clamp(4rem, 8vh, 6rem) clamp(1.5rem, 4vw, 3rem);
+  background: linear-gradient(
+    180deg,
+    #0f0f1a 0%,
+    #12121f 50%,
+    #0f0f1a 100%
+  );
+}
+
+.inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: #f0f0f5;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+}
+
+.desc {
+  text-align: center;
+  color: rgba(240, 240, 245, 0.45);
+  font-size: 1rem;
+  margin: 0 0 2rem;
+}
+
+.widgetContainer {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #1a1a2e;
+}

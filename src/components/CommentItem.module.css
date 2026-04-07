@@ -1,0 +1,105 @@
+.comment {
+  display: flex;
+  gap: 12px;
+  padding: var(--peleja-spacing, 16px) 0;
+  border-bottom: 1px solid var(--peleja-border-color, #e0e0e0);
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.author {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--peleja-muted-color, #6c757d);
+}
+
+.editedBadge {
+  font-size: 11px;
+  color: var(--peleja-muted-color, #6c757d);
+  font-style: italic;
+}
+
+.content {
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.deletedContent {
+  font-style: italic;
+  color: var(--peleja-muted-color, #6c757d);
+}
+
+.gif {
+  max-width: 300px;
+  max-height: 200px;
+  border-radius: var(--peleja-radius, 8px);
+  margin-bottom: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  color: var(--peleja-muted-color, #6c757d);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 2px 0;
+}
+
+.actionBtn:hover {
+  color: var(--peleja-accent-color, #007bff);
+}
+
+.liked {
+  color: var(--peleja-accent-color, #007bff);
+}
+
+.replies {
+  margin-top: 8px;
+  padding-left: 24px;
+  border-left: 2px solid var(--peleja-border-color, #e0e0e0);
+}
+
+@media (max-width: 768px) {
+  .comment {
+    gap: 8px;
+  }
+
+  .gif {
+    max-width: 100%;
+  }
+
+  .replies {
+    padding-left: 16px;
+  }
+}

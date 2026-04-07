@@ -1,0 +1,59 @@
+.container {
+  --peleja-font-family: inherit;
+  --peleja-border-color: #e0e0e0;
+  --peleja-accent-color: #007bff;
+  --peleja-bg-color: transparent;
+  --peleja-text-color: inherit;
+  --peleja-muted-color: #6c757d;
+  --peleja-danger-color: #dc3545;
+  --peleja-radius: 8px;
+  --peleja-spacing: 16px;
+
+  font-family: var(--peleja-font-family);
+  color: var(--peleja-text-color);
+  background: var(--peleja-bg-color);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--peleja-spacing);
+  padding-bottom: calc(var(--peleja-spacing) / 2);
+  border-bottom: 1px solid var(--peleja-border-color);
+}
+
+.error {
+  padding: var(--peleja-spacing);
+  text-align: center;
+  color: var(--peleja-danger-color);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: calc(var(--peleja-spacing) * 2);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--peleja-border-color);
+  border-top-color: var(--peleja-accent-color);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    --peleja-spacing: 12px;
+  }
+}
