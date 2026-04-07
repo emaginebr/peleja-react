@@ -56,6 +56,11 @@
   border-color: rgba(233, 69, 96, 0.5);
 }
 
+.select option {
+  background: #1a1a2e;
+  color: #f0f0f5;
+}
+
 .error {
   font-size: 0.8rem;
   color: #e94560;

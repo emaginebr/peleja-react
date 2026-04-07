@@ -26,5 +26,9 @@
   "searchGifs": "Pesquisar GIFs...",
   "rateLimited": "Muitas requisições. Aguarde um momento.",
   "errorLoading": "Erro ao carregar comentários",
-  "errorBlocked": "Este widget não está disponível"
+  "errorBlocked": "Este widget não está disponível",
+  "noAccount": "Não tem conta?",
+  "registerHere": "Registre-se",
+  "alreadyHaveAccount": "Já tem conta?",
+  "loginHere": "Entrar"
 }

@@ -17,7 +17,17 @@ export const initI18n = (language: string = 'pt-BR') => {
       interpolation: { escapeValue: false },
     })
   } else {
-    i18n.changeLanguage(language)
+    for (const [lng, res] of Object.entries(resources)) {
+      const translations = (res as { translation: Record<string, string> }).translation
+      for (const [key, value] of Object.entries(translations)) {
+        if (!i18n.exists(key, { lng })) {
+          i18n.addResource(lng, 'translation', key, value)
+        }
+      }
+    }
+    if (i18n.language !== language) {
+      i18n.changeLanguage(language)
+    }
   }
   return i18n
 }

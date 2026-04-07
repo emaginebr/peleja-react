@@ -16,13 +16,22 @@ export default defineConfig({
       fileName: 'peleja-react',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'nauth-react'],
+      external: [
+        'react',
+        'react-dom',
+        'react/jsx-runtime',
+        'nauth-react',
+        'i18next',
+        'react-i18next',
+      ],
       output: {
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
           'react/jsx-runtime': 'jsxRuntime',
           'nauth-react': 'NAuthReact',
+          'i18next': 'i18next',
+          'react-i18next': 'reactI18next',
         },
       },
     },

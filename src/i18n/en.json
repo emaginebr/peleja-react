@@ -26,5 +26,9 @@
   "searchGifs": "Search GIFs...",
   "rateLimited": "Too many requests. Please wait a moment.",
   "errorLoading": "Error loading comments",
-  "errorBlocked": "This widget is not available"
+  "errorBlocked": "This widget is not available",
+  "noAccount": "Don't have an account?",
+  "registerHere": "Sign up",
+  "alreadyHaveAccount": "Already have an account?",
+  "loginHere": "Sign in"
 }

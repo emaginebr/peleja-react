@@ -6,6 +6,8 @@ import { LandingPage } from './pages/LandingPage'
 import { LoginPage } from './pages/LoginPage'
 import { RegisterPage } from './pages/RegisterPage'
 import { SitesPage } from './pages/admin/SitesPage'
+import { PagesPage } from './pages/admin/PagesPage'
+import { PageCommentsPage } from './pages/admin/PageCommentsPage'
 import { CommentsPage } from './pages/admin/CommentsPage'
 
 export const App = () => (
@@ -23,6 +25,8 @@ export const App = () => (
       }
     >
       <Route path="/admin/sites" element={<SitesPage />} />
+      <Route path="/admin/sites/:siteId/pages" element={<PagesPage />} />
+      <Route path="/admin/sites/:siteId/pages/:pageId/comments" element={<PageCommentsPage />} />
       <Route path="/admin/comments" element={<CommentsPage />} />
     </Route>
   </Routes>

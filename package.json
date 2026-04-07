@@ -12,7 +12,7 @@
       "import": "./dist/peleja-react.js",
       "require": "./dist/peleja-react.cjs"
     },
-    "./style.css": "./dist/style.css"
+    "./style.css": "./dist/peleja-react.css"
   },
   "files": [
     "dist"
@@ -26,13 +26,13 @@
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "nauth-react": "^0.2.0"
+    "nauth-react": "^0.2.0",
+    "i18next": "^25.0.0",
+    "react-i18next": "^15.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.0",
-    "emoji-picker-react": "^4.0.0",
-    "i18next": "^25.0.0",
-    "react-i18next": "^15.0.0"
+    "emoji-picker-react": "^4.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

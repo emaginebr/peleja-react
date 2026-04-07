@@ -1,0 +1,147 @@
+.page {
+  max-width: 960px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: #e94560;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.backBtn:hover {
+  text-decoration: underline;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.siteUrl {
+  font-size: 0.85rem;
+  color: rgba(240, 240, 245, 0.4);
+  margin: 0.25rem 0 0;
+  word-break: break-all;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pageItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: #f0f0f5;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  width: 100%;
+}
+
+.pageItem:hover {
+  border-color: rgba(233, 69, 96, 0.25);
+  background: rgba(233, 69, 96, 0.04);
+}
+
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.pageUrl {
+  word-break: break-all;
+  font-weight: 500;
+}
+
+.pageDate {
+  font-size: 0.75rem;
+  color: rgba(240, 240, 245, 0.35);
+}
+
+.pageRight {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: 1.5rem;
+}
+
+.commentCount {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e94560;
+}
+
+.commentLabel {
+  font-size: 0.75rem;
+  color: rgba(240, 240, 245, 0.4);
+}
+
+.chevron {
+  color: rgba(240, 240, 245, 0.3);
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.loadMoreBtn {
+  padding: 0.6rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(240, 240, 245, 0.7);
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadMoreBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f0f5;
+}
+
+.loadMoreBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: rgba(240, 240, 245, 0.35);
+}

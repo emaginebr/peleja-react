@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useAuth } from 'nauth-react'
 import { initI18n } from '../i18n'
 import type { PelejaCommentsProps } from '../types/comment'
@@ -13,10 +13,13 @@ export const PelejaComments = ({
   clientId,
   pageUrl,
   apiUrl,
+  tenantId,
   language = 'pt-BR',
   className,
 }: PelejaCommentsProps) => {
-  initI18n(language)
+  useEffect(() => {
+    initI18n(language)
+  }, [language])
 
   const { token } = useAuth()
 
@@ -29,6 +32,7 @@ export const PelejaComments = ({
         clientId={clientId}
         pageUrl={pageUrl}
         getToken={getToken}
+        tenantId={tenantId}
       >
         <PelejaCommentsInner pageUrl={pageUrl} />
       </CommentProvider>

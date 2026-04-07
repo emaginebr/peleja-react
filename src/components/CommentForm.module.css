@@ -2,7 +2,6 @@
   margin-bottom: var(--peleja-spacing, 16px);
   border: 1px solid var(--peleja-border-color, #e0e0e0);
   border-radius: var(--peleja-radius, 8px);
-  overflow: hidden;
 }
 
 .textarea {
@@ -114,4 +113,26 @@
   font-size: 20px;
   cursor: pointer;
   color: var(--peleja-muted-color, #6c757d);
+}
+
+.authSwitch {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--peleja-muted-color, #6c757d);
+}
+
+.authSwitchLink {
+  background: none;
+  border: none;
+  color: var(--peleja-accent-color, #007bff);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0;
+  text-decoration: none;
+}
+
+.authSwitchLink:hover {
+  text-decoration: underline;
 }

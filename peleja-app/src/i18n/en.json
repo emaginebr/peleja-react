@@ -62,5 +62,8 @@
   "registerHere": "Register",
   "hasAccount": "Already have an account?",
   "loginHere": "Log in",
+  "pages": "Pages",
+  "noPages": "No pages found",
+  "loadMore": "Load more",
   "copyright": "© 2026 Peleja. All rights reserved."
 }

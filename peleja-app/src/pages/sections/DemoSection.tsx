@@ -5,6 +5,7 @@ import styles from './DemoSection.module.css'
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 const DEMO_CLIENT_ID =
   import.meta.env.VITE_DEMO_CLIENT_ID || 'demo-client-id'
+const TENANT_ID = import.meta.env.VITE_TENANT_ID || 'emagine'
 
 export const DemoSection = () => {
   const { t } = useTranslation()
@@ -17,8 +18,9 @@ export const DemoSection = () => {
         <div className={styles.widgetContainer}>
           <PelejaComments
             clientId={DEMO_CLIENT_ID}
-            pageUrl="https://peleja.com/demo"
+            pageUrl={window.location.href}
             apiUrl={API_URL}
+            tenantId={TENANT_ID}
           />
         </div>
       </div>

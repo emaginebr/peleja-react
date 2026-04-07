@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useAuth } from 'nauth-react'
+import { useSites } from '../../hooks/useSites'
 import styles from './CommentList.module.css'
 
 interface CommentResult {
@@ -12,7 +12,8 @@ interface CommentResult {
   likeCount: number
   createdAt: string
   userId: number
-  userName: string
+  userName?: string | null
+  userImageUrl?: string | null
 }
 
 interface PaginatedComments {
@@ -22,13 +23,13 @@ interface PaginatedComments {
 }
 
 interface CommentListProps {
-  clientId: string
-  pageUrl: string
+  siteId: number
+  pageId: number
 }
 
-export const CommentList = ({ clientId, pageUrl }: CommentListProps) => {
+export const CommentList = ({ siteId, pageId }: CommentListProps) => {
   const { t } = useTranslation()
-  const { token } = useAuth()
+  const { service } = useSites()
   const [comments, setComments] = useState<CommentResult[]>([])
   const [nextCursor, setNextCursor] = useState<string | null>(null)
   const [hasMore, setHasMore] = useState(false)
@@ -36,36 +37,27 @@ export const CommentList = ({ clientId, pageUrl }: CommentListProps) => {
   const [deleteId, setDeleteId] = useState<number | null>(null)
   const [isDeleting, setIsDeleting] = useState(false)
 
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
-
   const fetchComments = useCallback(
     async (cursor?: string | null) => {
       setIsLoading(true)
       try {
-        const params = new URLSearchParams({ pageUrl })
-        if (cursor) params.set('cursor', cursor)
-        const response = await fetch(
-          `${apiUrl}/api/v1/comments?${params}`,
-          {
-            headers: {
-              'X-Client-Id': clientId,
-              ...(token ? { Authorization: `Bearer ${token}` } : {}),
-            },
-          },
-        )
-        const data: PaginatedComments = await response.json()
+        const result = await service.getPageComments(
+          siteId,
+          pageId,
+          cursor ?? undefined,
+        ) as PaginatedComments
         if (cursor) {
-          setComments((prev) => [...prev, ...data.items])
+          setComments((prev) => [...prev, ...result.items])
         } else {
-          setComments(data.items)
+          setComments(result.items)
         }
-        setNextCursor(data.nextCursor)
-        setHasMore(data.hasMore)
+        setNextCursor(result.nextCursor)
+        setHasMore(result.hasMore)
       } finally {
         setIsLoading(false)
       }
     },
-    [apiUrl, clientId, pageUrl, token],
+    [service, siteId, pageId],
   )
 
   useEffect(() => {
@@ -76,11 +68,20 @@ export const CommentList = ({ clientId, pageUrl }: CommentListProps) => {
     if (!deleteId) return
     setIsDeleting(true)
     try {
+      // DELETE uses the public comment endpoint with X-Client-Id
+      // But since we're in the admin context with X-Tenant-Id,
+      // we use the service's http client which has the tenant header
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+      const tenantId = import.meta.env.VITE_TENANT_ID || 'emagine'
+      const token = document.cookie // nauth stores in localStorage
+      const storedAuth = localStorage.getItem('login-with-metamask:auth')
+      const authToken = storedAuth ? JSON.parse(storedAuth)?.token : null
+
       await fetch(`${apiUrl}/api/v1/comments/${deleteId}`, {
         method: 'DELETE',
         headers: {
-          'X-Client-Id': clientId,
-          Authorization: `Bearer ${token}`,
+          'X-Tenant-Id': tenantId,
+          ...(authToken ? { Authorization: `Bearer ${authToken}` } : {}),
         },
       })
       setComments((prev) =>
@@ -94,7 +95,7 @@ export const CommentList = ({ clientId, pageUrl }: CommentListProps) => {
     } finally {
       setIsDeleting(false)
     }
-  }, [deleteId, apiUrl, clientId, token])
+  }, [deleteId])
 
   if (isLoading && comments.length === 0) {
     return <div className={styles.empty}>{t('loading')}</div>
@@ -111,7 +112,9 @@ export const CommentList = ({ clientId, pageUrl }: CommentListProps) => {
           <div key={comment.commentId} className={styles.comment}>
             <div className={styles.commentHeader}>
               <span className={styles.author}>
-                {comment.isDeleted ? '—' : comment.userName}
+                {comment.isDeleted
+                  ? '—'
+                  : comment.userName || `User ${comment.userId}`}
               </span>
               <span className={styles.date}>
                 {new Date(comment.createdAt).toLocaleString()}
@@ -149,7 +152,10 @@ export const CommentList = ({ clientId, pageUrl }: CommentListProps) => {
       )}
 
       {deleteId && (
-        <div className={styles.confirmOverlay} onClick={() => setDeleteId(null)}>
+        <div
+          className={styles.confirmOverlay}
+          onClick={() => setDeleteId(null)}
+        >
           <div
             className={styles.confirmModal}
             onClick={(e) => e.stopPropagation()}

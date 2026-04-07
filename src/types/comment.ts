@@ -9,8 +9,8 @@ export interface CommentResult {
   createdAt: string
   parentCommentId: number | null
   userId: number
-  userName: string
-  userImageUrl: string | null
+  userName?: string | null
+  userImageUrl?: string | null
   replies: CommentResult[] | null
 }
 
@@ -42,6 +42,7 @@ export interface PelejaCommentsProps {
   clientId: string
   pageUrl: string
   apiUrl: string
+  tenantId?: string
   language?: 'pt-BR' | 'en'
   className?: string
 }

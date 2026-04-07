@@ -8,9 +8,8 @@ import { Avatar } from './Avatar'
 import { ReplyForm } from './ReplyForm'
 import { EditForm } from './EditForm'
 import { DeleteConfirm } from './DeleteConfirm'
-import { LoginForm } from 'nauth-react'
+import { AuthModal } from './AuthModal'
 import styles from './CommentItem.module.css'
-import formStyles from './CommentForm.module.css'
 
 interface CommentItemProps {
   comment: CommentResult
@@ -76,10 +75,10 @@ export const CommentItem = ({
 
   return (
     <div className={styles.comment}>
-      <Avatar name={comment.userName} imageUrl={comment.userImageUrl} />
+      <Avatar name={comment.userName || `User ${comment.userId}`} imageUrl={comment.userImageUrl ?? null} />
       <div className={styles.body}>
         <div className={styles.header}>
-          <span className={styles.author}>{comment.userName}</span>
+          <span className={styles.author}>{comment.userName || `User ${comment.userId}`}</span>
           <span className={styles.date}>
             {formatRelativeDate(comment.createdAt)}
           </span>
@@ -177,21 +176,7 @@ export const CommentItem = ({
       )}
 
       {showLoginModal && (
-        <div className={formStyles.loginOverlay} onClick={closeLoginModal}>
-          <div
-            className={formStyles.loginModal}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className={formStyles.closeBtn}
-              onClick={closeLoginModal}
-              type="button"
-            >
-              ×
-            </button>
-            <LoginForm onSuccess={closeLoginModal} />
-          </div>
-        </div>
+        <AuthModal onSuccess={closeLoginModal} onClose={closeLoginModal} />
       )}
     </div>
   )

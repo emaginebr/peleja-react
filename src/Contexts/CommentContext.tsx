@@ -178,6 +178,7 @@ interface CommentProviderProps {
   clientId: string
   pageUrl: string
   getToken: () => string | null
+  tenantId?: string
   children: ReactNode
 }
 
@@ -186,17 +187,18 @@ export const CommentProvider = ({
   clientId,
   pageUrl,
   getToken,
+  tenantId,
   children,
 }: CommentProviderProps) => {
   const [state, dispatch] = useReducer(commentReducer, initialState)
 
   const { service, giphyService } = useMemo(() => {
-    const http = createHttpClient(apiUrl, clientId, getToken)
+    const http = createHttpClient(apiUrl, clientId, getToken, tenantId)
     return {
       service: createCommentService(http),
       giphyService: createGiphyService(http),
     }
-  }, [apiUrl, clientId, getToken])
+  }, [apiUrl, clientId, getToken, tenantId])
 
   const loadComments = useCallback(async () => {
     dispatch({ type: 'LOAD_START' })

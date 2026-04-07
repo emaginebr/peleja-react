@@ -5,7 +5,8 @@ interface AvatarProps {
   imageUrl: string | null
 }
 
-const getInitials = (name: string): string => {
+const getInitials = (name: string | undefined | null): string => {
+  if (!name) return '?'
   const parts = name.trim().split(/\s+/)
   if (parts.length >= 2) {
     return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
@@ -16,7 +17,7 @@ const getInitials = (name: string): string => {
 export const Avatar = ({ name, imageUrl }: AvatarProps) => (
   <div className={styles.avatar}>
     {imageUrl ? (
-      <img src={imageUrl} alt={name} />
+      <img src={imageUrl} alt={name || ''} />
     ) : (
       getInitials(name)
     )}

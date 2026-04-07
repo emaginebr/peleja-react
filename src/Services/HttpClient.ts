@@ -5,15 +5,26 @@ export interface HttpClient {
   del: (path: string) => Promise<void>
 }
 
+export interface HttpClientOptions {
+  apiUrl: string
+  clientId: string
+  getToken: () => string | null
+  tenantId?: string
+}
+
 export const createHttpClient = (
   apiUrl: string,
   clientId: string,
   getToken: () => string | null,
+  tenantId?: string,
 ): HttpClient => {
   const buildHeaders = (): HeadersInit => {
     const headers: Record<string, string> = {
       'X-Client-Id': clientId,
       'Content-Type': 'application/json',
+    }
+    if (tenantId) {
+      headers['X-Tenant-Id'] = tenantId
     }
     const token = getToken()
     if (token) {

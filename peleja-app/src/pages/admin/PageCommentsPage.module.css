@@ -1,0 +1,29 @@
+.page {
+  max-width: 960px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: #e94560;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.backBtn:hover {
+  text-decoration: underline;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 0 1.5rem;
+  letter-spacing: -0.02em;
+}

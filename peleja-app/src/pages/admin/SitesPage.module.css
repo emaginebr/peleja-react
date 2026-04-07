@@ -109,10 +109,13 @@
 }
 
 .actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(240, 240, 245, 0.6);
-  padding: 0.35rem 0.7rem;
+  padding: 0.4rem;
   border-radius: 6px;
   font-size: 0.8rem;
   font-family: inherit;
@@ -139,6 +142,35 @@
 .emptyTitle {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.loadMoreBtn {
+  padding: 0.6rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(240, 240, 245, 0.7);
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.loadMoreBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0f0f5;
+}
+
+.loadMoreBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {

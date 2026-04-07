@@ -63,3 +63,60 @@
   padding: 4rem 2rem;
   color: rgba(240, 240, 245, 0.35);
 }
+
+.pageList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pageItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  color: #f0f0f5;
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.pageItem:hover {
+  border-color: rgba(233, 69, 96, 0.25);
+  background: rgba(233, 69, 96, 0.04);
+}
+
+.pageUrl {
+  word-break: break-all;
+}
+
+.pageCount {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  color: rgba(240, 240, 245, 0.4);
+  margin-left: 1rem;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  background: none;
+  border: none;
+  color: #e94560;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.backBtn:hover {
+  text-decoration: underline;
+}
